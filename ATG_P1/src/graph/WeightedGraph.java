@@ -12,7 +12,7 @@ package graph;
 /**
  * Objeto WeightedGraph
  * @author Luan C
- *
+ * @version 1.0
  */
 public class WeightedGraph extends Graph {
 
@@ -27,6 +27,8 @@ public class WeightedGraph extends Graph {
 	 * @param arrayOrigem, Colecao de inteiros armazenando os Vertices que originam as ligacoes
 	 * @param arrayDestino, Colecao de inteiros que armazeda os Vertices que recebem as ligacoes
 	 * @param arrayPesos, Colecao de Doubles que armazenam os pesos de cada aresta
+	 * @author Luan C
+	 * @version 1.0
 	 */
 	public WeightedGraph(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino, Double[] arrayPesos) {
 		super(qtdVertices, arrayOrigem, arrayDestino);
@@ -49,5 +51,9 @@ public class WeightedGraph extends Graph {
 
 	public Double[] getArrayPesos() {
 		return arrayPesos;
+	}
+	
+	public int getQtdArestas() {
+		return arrayOrigem.length;
 	}
 }

@@ -14,7 +14,7 @@ import controller.Controller;
 /**
  * Metodo Main
  * @author Luan C
- *
+ * @version 1.0
  */
 public class Main {
 	private static Controller controlador;
@@ -23,10 +23,10 @@ public class Main {
 	 * Inicio
 	 * @param args
 	 * @author Luan C
+	 * @version 1.0
 	 */
 	public static void main(String[] args) {
 		controlador = new Controller();
-
 	}
 
 }

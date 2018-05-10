@@ -12,7 +12,7 @@ package graph;
 /**
  * Objeto Graph
  * @author Luan C
- *
+ * @version 1.0
  */
 public class Graph {
 	private int qtdVertices;
@@ -24,6 +24,8 @@ public class Graph {
 	 * @param qtdVertices, Integer com a quantidade de Vertices
 	 * @param arrayOrigem, Colecao armazenando os Vertices que originam as ligacoes
 	 * @param arrayDestino, Colecao que armazeda os Vertices que recebem as ligacoes
+	 * @author Luan C
+	 * @version 1.0
 	 */
 	public Graph(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino) {
 		this.qtdVertices = qtdVertices;
@@ -31,6 +33,8 @@ public class Graph {
 		this.arrayOrigem = arrayOrigem;
 	}
 
+	// gets e sets 
+	
 	public int getQtdVertices() {
 		return qtdVertices;
 	}
@@ -41,5 +45,9 @@ public class Graph {
 
 	public Integer[] getArrayDestino() {
 		return arrayDestino;
+	}
+	
+	public int getQtdArestas() {
+		return arrayOrigem.length;
 	}
 }
