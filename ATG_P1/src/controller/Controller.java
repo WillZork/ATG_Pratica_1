@@ -126,14 +126,9 @@ public class Controller {
 		String retorno = "";
 		if (containsGraph(grafo)) {
 			if (type.equals("AM")) {
-				int[][] ligacoes = new int[grafo.getQtdVertices()][grafo.getQtdVertices()];
-				for (int i = 1; i <= grafo.getQtdVertices(); i++) {
-					for (int j = 1; j <= grafo.getQtdVertices(); j++) {
-						
-					}
-				}
+				grafo.graphRepresentationAM();
 			}else if(type.equals("AL")){
-				
+				grafo.graphRepresentationAL();
 			}else {
 				
 			}

@@ -32,6 +32,41 @@ public class Graph {
 		this.arrayDestino = arrayDestino;
 		this.arrayOrigem = arrayOrigem;
 	}
+	
+	/**
+	 * Metodo de representacao AM
+	 * @return matrizResposta, String com a representacao do grafo
+	 * @author Tatiane Andrade
+	 * @version 1.0
+	 */
+	public String graphRepresentationAM () {
+		String matrizResposta = "  ";
+		Integer[][] matriz = new Integer[qtdVertices][qtdVertices];
+		for(int j = 0; j < matriz.length; j++) {
+			for(int k = 0; k < matriz.length; k++) {
+				matriz[j][k] = 0;
+			}
+		}
+		for(int i = 0; i < arrayOrigem.length; i++) {
+			matriz[arrayOrigem[i]-1][arrayDestino[i]-1] = 1;
+			matriz[arrayDestino[i]-1][arrayOrigem[i]-1] = 1;
+		}
+		for(int m = 1; m <= qtdVertices; m++) {
+			matrizResposta += m + " ";
+		}
+		for(int j = 0; j < matriz.length; j++) {
+			matrizResposta += "\n" + (j+1) + " ";
+			for(int k = 0; k < matriz.length; k++) {
+				matrizResposta += matriz[j][k] + " ";
+			}
+		}
+		return matrizResposta;
+	}
+	
+	public void graphRepresentationAL() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	// gets e sets 
 	
