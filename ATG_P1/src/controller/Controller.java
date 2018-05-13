@@ -140,6 +140,26 @@ public class Controller {
 		}
 		return retorno;
 	}
+	
+	public String BFS(Graph grafo, int v) {
+		return "";
+	}
+	
+	public String DFS(Graph grafo, int v) {
+		return "";
+	}
+	
+	boolean connected(Graph grafo) {
+		return false;
+	}
+	
+	String shortestPath(int v1, int v2) {
+		return "";
+	}
+	
+	String mst(Graph grafo) {
+		return "";
+	}
 
 	/**
 	 * Verifica se o Graph esta cadastrado
