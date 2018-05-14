@@ -74,13 +74,17 @@ public class Graph {
 		 Map<Integer, ArrayList<Integer>> AL = new HashMap<Integer,ArrayList<Integer>>();
 		 int flag = 1;
 		 ArrayList<Integer> ligacoes;
-		 while(flag > this.qtdVertices){
+		 while(flag <= this.qtdVertices){
 			 ligacoes = new ArrayList<Integer>();
 			 for (int i = 0; i < arrayOrigem.length; i++) {
-				 if(arrayOrigem[i]==flag){
+				 if(arrayOrigem[i] == flag){
 					 ligacoes.add(arrayDestino[i]);
 				 }
+				 if(arrayDestino[i] == flag) {
+					 ligacoes.add(arrayOrigem[i]);
+				 }
 			 }
+			 ligacoes.sort((o1, o2) -> o1 - o2);
 			 AL.put(flag, ligacoes);
 			 flag++;
 		 }
@@ -90,7 +94,7 @@ public class Graph {
 			 for (Integer valor : AL.get(i)) {
 				ligacao += " " + valor;
 			}			
-			retorno += N+ i + " -" + ligacao;
+			retorno += N + i + " -" + ligacao;
 			ligacao = "";
 		}
 		return retorno;

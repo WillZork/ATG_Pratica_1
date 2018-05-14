@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) {
 		controlador = new Controller();
 		Graph grafo = new Graph(5, new  Integer[] {1, 2, 5, 4, 1}, new Integer[] {2, 5, 3, 5, 5});
-		System.out.println(grafo.graphRepresentationAM());
+		System.out.println(grafo.graphRepresentationAL());
 	}
 
 }
