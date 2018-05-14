@@ -45,9 +45,10 @@ public class Controller {
 	 * @author Luan C
 	 * @version 1.0
 	 */
-	public void criaGrafo(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino) {
+	public Graph criaGrafo(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino) {
 		Graph grafo = new Graph(qtdVertices, arrayOrigem, arrayDestino);
 		grafos.add(grafo);
+		return grafo;
 	}
 
 	/**
@@ -66,9 +67,10 @@ public class Controller {
 	 * @author Luan C
 	 * @version 1.0
 	 */
-	public void criaGrafoComPeso(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino, Double[] arrayPesos) {
+	public Graph criaGrafoComPeso(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino, Double[] arrayPesos) {
 		WeightedGraph grafo = new WeightedGraph(qtdVertices, arrayOrigem, arrayDestino, arrayPesos);
 		grafos.add(grafo);
+		return grafo;
 	}
 
 	/**
