@@ -102,7 +102,7 @@ public class Graph {
 		return qtdVertices;
 	}
 
-	public Integer[] getArrayOrigim() {
+	public Integer[] getArrayOrigem() {
 		return arrayOrigem;
 	}
 

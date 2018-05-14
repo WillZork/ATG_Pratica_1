@@ -156,8 +156,20 @@ public class Controller {
 		return "";
 	}
 	
-	boolean connected(Graph grafo) {
-		return false;
+	/**
+	 * Retorna se o grafo e conectado ou nao
+	 * @param grafo, Graph
+	 * @return boolean
+	 */
+	public boolean connected(Graph grafo) {
+		boolean retorno = true;
+		Integer[] origem = grafo.getArrayOrigem();
+		Integer[] destino = grafo.getArrayDestino();
+		for (int i = 0; i < destino.length; i++) {
+			if(destino[i] == null || origem[i] == null)
+				retorno = false;
+		}
+		return retorno;
 	}
 	
 	String shortestPath(int v1, int v2) {
