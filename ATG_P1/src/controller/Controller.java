@@ -117,20 +117,30 @@ public class Controller {
 	 */
 	public float getMeanEdge(Graph grafo) {
 		float retorno = 0;
-		retorno = (float) ((2.0 * grafo.getQtdArestas()) / (grafo.getQtdVertices() * 1.0)); // corrigir calculo de grau
-																							// medio
+		retorno = (float) ((2.0 * grafo.getQtdArestas()) * (1.0/grafo.getQtdVertices())); 
 		return retorno;
 	}
 
-	public String graphRepresentation(Graph grafo, String type) {
+	/**
+	 * Retorna a representacao desejada pelo usuario
+	 * @param grafo, Graph
+	 * @param type, String
+	 * @return String
+	 * @throws Exception	
+	 * @author Tatiane Andrade
+	 * @version 1.0
+	 * @author Luan C
+	 * @version 1.1
+	 */
+	public String graphRepresentation(Graph grafo, String type) throws Exception {
 		String retorno = "";
 		if (containsGraph(grafo)) {
 			if (type.equals("AM")) {
-				grafo.graphRepresentationAM();
+				retorno = grafo.graphRepresentationAM();
 			}else if(type.equals("AL")){
-				grafo.graphRepresentationAL();
+				retorno = grafo.graphRepresentationAL();
 			}else {
-				
+				throw new Exception("Opcao invalida");
 			}
 		}
 		return retorno;

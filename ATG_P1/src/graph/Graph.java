@@ -9,6 +9,10 @@
  */
 package graph;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Objeto Graph
  * @author Luan C
@@ -18,6 +22,7 @@ public class Graph {
 	private int qtdVertices;
 	private Integer[] arrayOrigem;
 	private Integer[] arrayDestino;
+	private static final String N = System.lineSeparator();
 
 	/**
 	 * Construtor do Graph
@@ -38,6 +43,8 @@ public class Graph {
 	 * @return matrizResposta, String com a representacao do grafo
 	 * @author Tatiane Andrade
 	 * @version 1.0
+	 * @author Luan C
+	 * @version 1.1
 	 */
 	public String graphRepresentationAM () {
 		String matrizResposta = "  ";
@@ -63,9 +70,30 @@ public class Graph {
 		return matrizResposta;
 	}
 	
-	public void graphRepresentationAL() {
-		// TODO Auto-generated method stub
-		
+	public String graphRepresentationAL() {
+		 Map<Integer, ArrayList<Integer>> AL = new HashMap<Integer,ArrayList<Integer>>();
+		 int flag = 1;
+		 ArrayList<Integer> ligacoes;
+		 while(flag > this.qtdVertices){
+			 ligacoes = new ArrayList<Integer>();
+			 for (int i = 0; i < arrayOrigem.length; i++) {
+				 if(arrayOrigem[i]==flag){
+					 ligacoes.add(arrayDestino[i]);
+				 }
+			 }
+			 AL.put(flag, ligacoes);
+			 flag++;
+		 }
+		 String retorno = "";
+		 String ligacao = "";
+		 for (int i = 1; i < flag; i++) {
+			 for (Integer valor : AL.get(i)) {
+				ligacao += " " + valor;
+			}			
+			retorno += N+ i + " -" + ligacao;
+			ligacao = "";
+		}
+		return retorno;
 	}
 
 	// gets e sets 
