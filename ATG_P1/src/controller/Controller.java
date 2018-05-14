@@ -76,8 +76,7 @@ public class Controller {
 	/**
 	 * Retorna a quantidade de vertices em um grafo
 	 * 
-	 * @param grafo,
-	 *            Graph que sera pesquisado
+	 * @param grafo,Graph que sera pesquisado
 	 * @return Integer
 	 * @author Luan C
 	 * @version 1.0
@@ -111,16 +110,13 @@ public class Controller {
 	/**
 	 * Retorna o grau medio do grafo
 	 * 
-	 * @param grafo,
-	 *            Graph pesquisado
+	 * @param grafo, Graph pesquisado
 	 * @return Float
 	 * @author Luan C
 	 * @version 1.0
 	 */
-	public float getMeanEdge(Graph grafo) {
-		float retorno = 0;
-		retorno = (float) ((2.0 * grafo.getQtdArestas()) * (1.0/grafo.getQtdVertices())); 
-		return retorno;
+	public float getMeanEdge(Graph grafo) { 
+		return grafo.getMeanEdge();
 	}
 
 	/**

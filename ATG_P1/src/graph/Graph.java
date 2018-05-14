@@ -19,10 +19,10 @@ import java.util.Map;
  * @version 1.0
  */
 public class Graph {
-	private int qtdVertices;
-	private Integer[] arrayOrigem;
-	private Integer[] arrayDestino;
-	private static final String N = System.lineSeparator();
+	protected int qtdVertices;
+	protected Integer[] arrayOrigem;
+	protected Integer[] arrayDestino;
+	protected static final String N = System.lineSeparator();
 
 	/**
 	 * Construtor do Graph
@@ -36,6 +36,18 @@ public class Graph {
 		this.qtdVertices = qtdVertices;
 		this.arrayDestino = arrayDestino;
 		this.arrayOrigem = arrayOrigem;
+	}
+	
+	/**
+	 * Retorna o grau medio do grafo
+	 * @return Float
+	 * @author Luan C
+	 * @version 1.0
+	 */
+	public float getMeanEdge() {
+		float retorno = 0;
+		retorno = (float) ((2.0 * getQtdArestas()) * (1.0/getQtdVertices())); 
+		return retorno;
 	}
 	
 	/**
@@ -70,6 +82,14 @@ public class Graph {
 		return matrizResposta;
 	}
 	
+	/**
+	 * Metodo de representacao AL
+	 * @return matrizResposta, String com a representacao do grafo
+	 * @author Luan C
+	 * @version 1.0
+	 * @author Tatiane Andrade
+	 * @version 1.1
+	 */
 	public String graphRepresentationAL() {
 		 Map<Integer, ArrayList<Integer>> AL = new HashMap<Integer,ArrayList<Integer>>();
 		 int flag = 1;
