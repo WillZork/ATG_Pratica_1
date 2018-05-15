@@ -44,10 +44,10 @@ public class Main {
 		
 		while (true) {
 			System.out.println();
-			System.out.println("============== Prática 01 - ATG 2018.1 - UFCG ==============");
-			System.out.println("(Biblioteca de grafos desenvolvida para o curso de aplicações de teoria dos grafos.)");
+			System.out.println("============== Prï¿½tica 01 - ATG 2018.1 - UFCG ==============");
+			System.out.println("(Biblioteca de grafos desenvolvida para o curso de aplicaï¿½ï¿½es de teoria dos grafos.)");
 			System.out.println("\nO que voce deseja fazer??");
-			System.out.println("\n-Pressione 1 para ler um grafo não ponderado a partir de um arquivo .txt");
+			System.out.println("\n-Pressione 1 para ler um grafo nï¿½o ponderado a partir de um arquivo .txt");
 			System.out.println("\n-Pressione 2 para ler um grafo ponderado a partir de um arquivo .txt");
 			System.out.println("-Pressione 3 para sair");
 		
@@ -59,7 +59,7 @@ public class Main {
 				System.out.println("\n===== Leitura de Grafo =====");
 				System.out.print("\nDigite o caminho do arquivo .txt: ");
 				filePath = input.nextLine();
-				controlador.criaGrafo(InputFileReader.readGraph(filePath));
+				controlador.readGraph(filePath);
 			} else if (option.equals("2")) {
 				break;
 			} else if (option.equals("3")) {

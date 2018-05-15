@@ -102,11 +102,11 @@ public class GraphTests {
 	 */
 	@Test
 	public void testGraphRepresentationAL() {
-		String represetation = "\n1 - 2 5 "
-							 + "\n2 - 1 5 "
-							 + "\n3 - 5 "
-							 + "\n4 - 5 "
-							 + "\n5 - 1 2 3 4 ";
+		String represetation = "\n1 - 2 5"
+							 + "\n2 - 1 5"
+							 + "\n3 - 5"
+							 + "\n4 - 5"
+							 + "\n5 - 1 2 3 4";
 		try {
 			assertEquals(represetation, grafos.graphRepresentation(grafo, "AL"));
 		}catch (Exception e) {

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import graph.Graph;
 import graph.WeightedGraph;
+import reader.InputFileReader;
 
 /**
  * Controller do Sistema
@@ -21,17 +22,6 @@ import graph.WeightedGraph;
  * @version 1.0
  */
 public class Controller {
-	private ArrayList<Graph> grafos;
-
-	/**
-	 * Construtor do Controller
-	 * 
-	 * @author Luan C.
-	 * @version 1.0
-	 */
-	public Controller() {
-		grafos = new ArrayList<>();
-	}
 
 	/**
 	 * Cria um objeto Graph a partir do array de leitura.
@@ -45,7 +35,15 @@ public class Controller {
 	 * @author Luan C, Williamberg Ferreira
 	 * @version 1.0
 	 */
-	public Graph criaGrafo(Integer[] arrayInput) {
+	
+	public Graph criaGrafo(int vertice, Integer[] arrayOrigem, Integer[] arrayDestino) {
+
+		Graph grafo = new Graph(vertice, arrayOrigem, arrayDestino);
+		return grafo;
+	}
+	
+	public Graph readGraph(String path) throws Exception {
+		Integer[] arrayInput = InputFileReader.readGraph(path);
 		int qtdVertices = 0;
 		Integer[] arrayOrigem = new Integer[(arrayInput.length)/2];
 		Integer[] arrayDestino = new Integer[(arrayInput.length)/2];
@@ -59,10 +57,7 @@ public class Controller {
 				arrayDestino[i] = arrayInput[i];
 			}
 		}
-		
-		Graph grafo = new Graph(qtdVertices, arrayOrigem, arrayDestino);
-		grafos.add(grafo);
-		return grafo;
+		return criaGrafo(qtdVertices, arrayOrigem, arrayDestino);
 	}
 
 	/**
@@ -83,7 +78,6 @@ public class Controller {
 	 */
 	public Graph criaGrafoComPeso(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino, Double[] arrayPesos) {
 		WeightedGraph grafo = new WeightedGraph(qtdVertices, arrayOrigem, arrayDestino, arrayPesos);
-		grafos.add(grafo);
 		return grafo;
 	}
 
@@ -98,7 +92,7 @@ public class Controller {
 	 */
 
 	public int getVertexNumber(Graph grafo) throws Exception {
-		if(containsGraph(grafo)) 
+		if(grafo != null) 
 			return grafo.getQtdVertices();
 		else
 			throw new Exception("Grafo nao Existe");
@@ -115,7 +109,7 @@ public class Controller {
 	 * @throws Exception 
 	 */
 	public int getEdgeNumber(Graph grafo) throws Exception {
-		if(containsGraph(grafo)) 
+		if(grafo != null) 
 			return grafo.getQtdArestas();
 		else
 			throw new Exception("Grafo nao Existe");
@@ -144,7 +138,7 @@ public class Controller {
 	 */
 	public String graphRepresentation(Graph grafo, String type) throws Exception {
 		String retorno = "";
-		if (containsGraph(grafo)) {
+		if (grafo != null) {
 			if (type.equals("AM")) {
 				retorno = grafo.graphRepresentationAM();
 			}else if(type.equals("AL")){
@@ -181,15 +175,4 @@ public class Controller {
 		return "";
 	}
 
-	/**
-	 * Verifica se o Graph esta cadastrado
-	 * @param grafo, Graph procurado
-	 * @return boolean
-	 */
-	private boolean containsGraph(Graph grafo) {
-		if (grafos.contains(grafo))
-			return true;
-		else
-			return false;
-	}
 }
