@@ -34,7 +34,7 @@ public class Controller {
 	}
 
 	/**
-	 * Cria um objeto Graph
+	 * Cria um objeto Graph a partir do array de leitura.
 	 * 
 	 * @param qtdVertices,
 	 *            Integer com a quantidade de Vertices
@@ -42,10 +42,24 @@ public class Controller {
 	 *            Colecao armazenando os Vertices que originam as ligacoes
 	 * @param arrayDestino,
 	 *            Colecao que armazeda os Vertices que recebem as ligacoes
-	 * @author Luan C
+	 * @author Luan C, Williamberg Ferreira
 	 * @version 1.0
 	 */
-	public Graph criaGrafo(int qtdVertices, Integer[] arrayOrigem, Integer[] arrayDestino) {
+	public Graph criaGrafo(Integer[] arrayInput) {
+		int qtdVertices = 0;
+		Integer[] arrayOrigem = new Integer[(arrayInput.length)/2];
+		Integer[] arrayDestino = new Integer[(arrayInput.length)/2];
+		
+		for (int i = 0; i < arrayInput.length; i++) {
+			if (i == 0) {
+				qtdVertices = arrayInput[i];
+			} else if (i % 2 != 0) {
+				arrayOrigem[i] = arrayInput[i];
+			} else { // indice par
+				arrayDestino[i] = arrayInput[i];
+			}
+		}
+		
 		Graph grafo = new Graph(qtdVertices, arrayOrigem, arrayDestino);
 		grafos.add(grafo);
 		return grafo;
