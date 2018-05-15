@@ -12,6 +12,7 @@ package graph;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * Objeto Graph
@@ -137,4 +138,183 @@ public class Graph {
 	public int getQtdArestas() {
 		return arrayOrigem.length;
 	}
+	
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	public String DFS(int v) {
+		ArrayList<Integer> vertices = procuraVertices();
+		ArrayList<Integer> arvore = Arvore(v);
+		String retorno = "";
+		Stack<Integer> pilha = new Stack<Integer>();
+		int i = 0;
+		int j = 0;
+		Integer left = arvore.get(left(i));
+		Integer right = arvore.get(right(i)); 
+		pilha.push(i);
+		while(!pilha.isEmpty() && left(i) <= arvore.size() && right(i) <= arvore.size()) {		
+
+
+			left  = arvore.get(left(i));
+			right = arvore.get(right(i));	
+			if(left < right && left > -1 && !pilha.contains(left(i))) {
+				pilha.push(left(i));
+				retorno += left;
+				j = i;
+				i = left(i);
+			}else if(right > -1 && !pilha.contains(right(i))) {
+				pilha.push(right(i));
+				j = i;
+				i = right(i);
+				retorno += right;
+			}else {
+				i = j;
+			}
+		}
+		return retorno;
+	}
+	
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	public String BFS(int v) {
+		ArrayList<Integer> vertices = procuraVertices();
+		ArrayList<Integer> arvore = Arvore(v);
+		String retorno = "";
+		for(int i = 0; i < vertices.size(); i++) {
+			retorno += vertices.get(i) + " - ";
+			if(v == vertices.get(i)) 
+				retorno += "0 -";
+			else {
+				retorno += level(arvore, vertices.get(i)) + " " + parent(arvore, vertices.get(i));
+			}
+			retorno += "\n";
+		}
+		return retorno;
+	}
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private int parent(ArrayList<Integer> arvore, int no) {
+		return arvore.get((arvore.indexOf(no) - 1) / 2);
+	}
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private int right(int i) {
+	      return (i * 2 + 1) + 1;
+	}
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private int left(int i) {
+	      return (i * 2 + 1);
+	}
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private int level(ArrayList<Integer> arvore, int no) {
+		int quantidade = 0;
+		int posicao = arvore.indexOf(no);
+		int i = 0;
+		while(quantidade < posicao) {
+			int total = quantidade + (int) Math.pow(2, i);
+			if (total < posicao + 1) {
+				i++;
+			}
+			quantidade = total;
+		}
+		return i;
+	}
+	
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private ArrayList<Integer> Arvore(int v) {
+		
+		ArrayList<Integer> retorno = new ArrayList<>();
+		retorno.add(v);
+		int verticeDaVez;
+		for(int j = 0; j < getQtdVertices(); j++) {
+			int tamanho = retorno.size();
+			verticeDaVez = retorno.get(j);
+			for(int i = 0; i < arrayOrigem.length; i ++) {
+				if(verticeDaVez == arrayOrigem[i] && !retorno.contains(arrayDestino[i])) {
+					retorno.add(arrayDestino[i]);
+				}
+				if(verticeDaVez == arrayDestino[i] && !retorno.contains(arrayOrigem[i])) {
+					retorno.add(arrayOrigem[i]);
+				}
+			}
+			if(tamanho == retorno.size()) {
+				retorno.add(-1);
+				retorno.add(-1);
+			}
+		}
+		return retorno;
+	}
+	/**
+	 * @version 1.0
+	 * @author Marcos Junior
+	 * @param v
+	 * @return
+	 */
+	private ArrayList<Integer> procuraVertices() {
+		ArrayList<Integer> vertices = new ArrayList<Integer>();
+		
+		for(int i = 0; i < arrayOrigem.length; i++) {
+			Integer origem = arrayOrigem[i];
+			Integer destino = arrayDestino[i];
+			if(!vertices.contains(origem)) {
+				vertices.add(origem);
+			}
+			if(!vertices.contains(destino)) {
+				vertices.add(destino);
+			}
+		}
+		vertices.sort((o1, o2) -> o1 - o2);
+		return vertices;
+	}
+	/**
+	 * Verifica se o Graph esta cadastrado
+	 * 
+	 * 
+	 * @version 1.0
+	 * @author Luan C
+	 * @param v
+	 * @return boolean
+	 */
+	public boolean connected() {
+		boolean retorno = true;
+		Integer[] origem = arrayOrigem;
+		Integer[] destino = arrayDestino;
+		for (int i = 0; i < destino.length; i++) {
+			if(destino[i] == null || origem[i] == null)
+				retorno = false;
+		}
+		return retorno;
+	}
 }
+
+

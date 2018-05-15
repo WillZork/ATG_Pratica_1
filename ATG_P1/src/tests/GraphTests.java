@@ -30,6 +30,13 @@ public class GraphTests {
 		vertices = 5;
 		grafo = grafos.criaGrafo(vertices, ArrayO, ArrayD);		
 	}
+	
+	/**
+	 * 
+	 * @author Marcos Junior
+	 * @versao 1.0
+	 * 
+	 */
 
 	@Test
 	public void testGetVertexNumber() {
@@ -39,7 +46,12 @@ public class GraphTests {
 			fail(e.getMessage());
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Marcos Junior
+	 * @versao 1.0
+	 * 
+	 */
 	@Test
 	public void testGetEdgeNumber() {
 		try {
@@ -48,7 +60,12 @@ public class GraphTests {
 			fail(e.getMessage());
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Marcos Junior
+	 * @versao 1.0
+	 * 
+	 */
 	@Test
 	public void testGetMeanEdge() {
 		try {
@@ -57,7 +74,12 @@ public class GraphTests {
 			fail(e.getMessage());
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Marcos Junior
+	 * @versao 1.0
+	 * 
+	 */
 	@Test
 	public void testGraphRepresentationAM() {
 		String represetation = "  1 2 3 4 5 "
@@ -72,7 +94,12 @@ public class GraphTests {
 			fail(e.getMessage());
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Marcos Junior
+	 * @versao 1.0
+	 * 
+	 */
 	@Test
 	public void testGraphRepresentationAL() {
 		String represetation = "\n1 - 2 5 "

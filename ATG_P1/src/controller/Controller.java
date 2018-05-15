@@ -127,8 +127,6 @@ public class Controller {
 	 * @throws Exception	
 	 * @author Tatiane Andrade
 	 * @version 1.0
-	 * @author Luan C
-	 * @version 1.1
 	 */
 	public String graphRepresentation(Graph grafo, String type) throws Exception {
 		String retorno = "";
@@ -145,7 +143,7 @@ public class Controller {
 	}
 	
 	public String BFS(Graph grafo, int v) {
-		return "";
+		return grafo.BFS(v);
 	}
 	
 	public String DFS(Graph grafo, int v) {
@@ -158,14 +156,7 @@ public class Controller {
 	 * @return boolean
 	 */
 	public boolean connected(Graph grafo) {
-		boolean retorno = true;
-		Integer[] origem = grafo.getArrayOrigem();
-		Integer[] destino = grafo.getArrayDestino();
-		for (int i = 0; i < destino.length; i++) {
-			if(destino[i] == null || origem[i] == null)
-				retorno = false;
-		}
-		return retorno;
+		return grafo.connected();
 	}
 	
 	String shortestPath(int v1, int v2) {
