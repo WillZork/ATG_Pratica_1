@@ -52,8 +52,13 @@ public class WeightedGraph extends Graph {
 			}
 		}
 		for(int i = 0; i < arrayOrigem.length; i++) {
-			matriz[arrayOrigem[i]-1][arrayDestino[i]-1] = arrayPesos[i] +"";
-			matriz[arrayDestino[i]-1][arrayOrigem[i]-1] = arrayPesos[i] + "";
+			if (arrayPesos[i] - arrayPesos[i].intValue() == 0) {
+				matriz[arrayOrigem[i]-1][arrayDestino[i]-1] = arrayPesos[i].intValue() +"";
+				matriz[arrayDestino[i]-1][arrayOrigem[i]-1] = arrayPesos[i].intValue() + "";
+			}else {
+				matriz[arrayOrigem[i]-1][arrayDestino[i]-1] = arrayPesos[i] +"";
+				matriz[arrayDestino[i]-1][arrayOrigem[i]-1] = arrayPesos[i] + "";
+			}
 		}
 		for(int m = 1; m <= qtdVertices; m++) {
 			matrizResposta += m + " ";
@@ -81,10 +86,18 @@ public class WeightedGraph extends Graph {
 			 ligacoes = new ArrayList<String>();
 			 for (int i = 0; i < arrayOrigem.length; i++) {
 				 if(arrayOrigem[i] == flag){
-					 ligacoes.add(arrayDestino[i]+"("+arrayPesos[i]+")");
+					 if (arrayPesos[i] - arrayPesos[i].intValue() == 0) {
+						 ligacoes.add(arrayDestino[i] + "(" + arrayPesos[i].intValue() + ")");
+					 }else {
+						 ligacoes.add(arrayDestino[i] + "(" + arrayPesos[i] + ")");
+					 }
 				 }
 				 if(arrayDestino[i] == flag) {
-					 ligacoes.add(arrayOrigem[i]+"("+arrayPesos[i]+")");
+					 if (arrayPesos[i] - arrayPesos[i].intValue() == 0) {
+						 ligacoes.add(arrayOrigem[i] + "(" + arrayPesos[i].intValue() + ")");
+					 }else {
+						 ligacoes.add(arrayOrigem[i] + "(" + arrayPesos[i] + ")");
+					 }
 				 }
 			 }
 			 ligacoes.sort((o1, o2) -> o1.charAt(0) - o2.charAt(0));
